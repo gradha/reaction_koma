@@ -119,6 +119,10 @@ def process_arguments(argv):
 	parser.add_option("-c", "--convert", dest="convert_path",
 		action="store", help = "path to Imagemagik's convert binary",
 		default=default_convert_path)
+	parser.add_option("-t", "--top", dest="first",
+		action="store", help = "alias for the first panel")
+	parser.add_option("-b", "--bottom", dest="third",
+		action="store", help = "alias for the third panel")
 	parser.add_option("-w", "--strip-width", dest="strip_width",
 		action="store", type="int", help="width for the vertical strip",
 		default=default_strip_width)
