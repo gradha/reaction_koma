@@ -26,9 +26,9 @@ INI_TEMPLATE = """; Template for reaction_koma.py
 ; Specify the default images you want for each slot, params override them.
 ;[cinema]
 ;first=~/Pictures/friends/1.jpg
-;second=~/Pictures/friends/1.jpg
-;third=~/Pictures/friends/1.jpg
-;fourth=~/Pictures/friends/1.jpg
+;second=~/Pictures/friends/2.jpg
+;third=~/Pictures/friends/3.jpg
+;fourth=~/Pictures/friends/4.jpg
 """ % (KEY_CONVERT_PATH, KEY_WIDTH)
 
 
