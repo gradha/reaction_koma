@@ -128,6 +128,9 @@ def process_arguments(argv):
 		default=default_strip_width)
 	parser.add_option("-p", "--photoset", dest="photoset",
 		action="store", help = "name of the default photoset from ini file")
+	parser.add_option("-o", "--output", dest="output",
+		action="store", help = "filename for the strip, will be overwritten",
+		default="final.jpg")
 	(options, args) = parser.parse_args()
 
 	photoset = {}
@@ -178,7 +181,7 @@ def main():
 			options.panels[1], "-resize", S,
 			options.panels[2], "-resize", S,
 			options.panels[3], "-resize", S,
-			"-quality", "85", "-append", "final.jpg"]):
+			"-quality", "85", "-append", options.output]):
 		logging.error("Unexpected return value from %r", options.convert_path)
 	else:
 		logging.info("Done.")
