@@ -1,0 +1,16 @@
+# Matches on any directory
+*.diff
+*.jpg
+*.mode1v3
+*.orig
+*.pbxuser
+*.perspective
+*.perspectivev3
+*.png
+*.swp
+.DS_Store
+project.xcworkspace/
+tags
+xcuserdata/
+
+# Full paths.
