@@ -57,3 +57,18 @@ second=~/project/python/reaction_koma/sets/cinema/excited.jpg
 With these names you can create a meh-excited sequence or the *inverted*
 excited-meh sequence easily, you only need to specity the top and bottom images
 for each.
+
+Further improvements
+====================
+
+Arguably you would want to implement the image processing with the [Python
+Imaging Library](http://www.pythonware.com/products/pil/) which could be in
+theory more efficient, and since it doesn't depend on unixy software would be
+more portable to windows and the like.
+
+But windows user would prefer a tile interface rather than commandline. So
+arguably you would implement a GUI. And arguably you would later implement a
+text editor. And arguably you would implement an operative system as the last
+step.
+
+Arguably.
