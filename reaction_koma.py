@@ -4,12 +4,16 @@
 from contextlib import closing
 from optparse import OptionParser
 
-import Image
+#import Image
 import logging
 import os
 import os.path
 import sys
 import time
+
+
+DEFAULT_WIDTH = 500
+CONVERT_PATH = "/usr/local/bin/convert"
 
 
 def check_input_file(parser, filename, help_text):
@@ -49,13 +53,42 @@ def process_arguments(argv):
 	return [options.first, options.second, options.third, options.fourth]
 
 
+def get_image_size(filename):
+	"""f(string) -> (int, int)
+
+	Returns the size of the image as integers. Quits if there are problems.
+	"""
+	im = Image.open(filename)
+	return im.size
+
+
+def run_command(args):
+	"""f([string, ...]) -> int
+
+	Returns the value of the command being run, including parameters.
+	"""
+	logging.info("Running %r", args)
+	res = os.spawnvp(os.P_WAIT, args[0], args)
+	if res:
+		logging.warn("Return value %r when running %r", res, args)
+	return res
+
+
 def main():
 	"""f() -> None
 
 	Main entry point of the application.
 	"""
 	panels = process_arguments(sys.argv)
-	print panels
+	#sizes = [get_image_size(x) for x in panels]
+	# Prepare a target size which is taller than the expected width.
+	S = "%dx%d" % (DEFAULT_WIDTH, 2 * DEFAULT_WIDTH)
+	run_command([CONVERT_PATH, panels[0], "-resize", S,
+		panels[1], "-resize", S,
+		panels[2], "-resize", S,
+		panels[3], "-resize", S,
+		"-quality", "85", "-append", "final.jpg"])
+
 	logging.info("Done.")
 
 
