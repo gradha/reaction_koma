@@ -188,8 +188,8 @@ def main():
 
 
 if "__main__" == __name__:
-	#logging.basicConfig(level = logging.INFO)
-	logging.basicConfig(level = logging.DEBUG)
+	logging.basicConfig(level = logging.INFO)
+	#logging.basicConfig(level = logging.DEBUG)
 	t1 = time.time()
 	main()
 	t2 = time.time()
