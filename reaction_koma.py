@@ -127,13 +127,21 @@ def process_arguments(argv):
 		action="store", type="int", help="width for the vertical strip",
 		default=default_strip_width)
 	parser.add_option("-p", "--photoset", dest="photoset",
-		action="store", help = "name of the default photoset from ini file")
+		action="store", help = "name of the default photoset from ini file, " +
+			"use list to show available photosets in configuration file")
 	parser.add_option("-o", "--output", dest="output",
 		action="store", help = "filename for the strip, will be overwritten",
 		default="final.jpg")
 	(options, args) = parser.parse_args()
 
 	photoset = {}
+	if options.photoset == "list":
+		print "Listing available photoset names:"
+		for f in sorted(config.keys()):
+			if f != "global":
+				print "\t", f
+		sys.exit(0)
+
 	if options.photoset and options.photoset in config:
 		photoset = config[options.photoset]
 
